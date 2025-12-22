@@ -40,6 +40,58 @@
     .close-btn:hover {
       background: rgba(0,0,0,0.8);
     }
+    /* 비디오 배경 스타일 */
+            .video-background {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                min-width: 100%;
+                min-height: 100%;
+                width: auto;
+                height: auto;
+                z-index: 0;
+                transform: translate(-50%, -50%);
+                object-fit: cover;
+            }
+            .video-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.4); /* 어둡기 조절 */
+                z-index: 1;
+            }
+            .masthead-content {
+                position: relative;
+                z-index: 2;
+            }
+
+            /* 가짜 뉴스 스타일 */
+            .news-frame {
+                border: 4px solid #ff0000;
+                position: relative;
+                overflow: hidden;
+                background: #000;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+                border-radius: 8px;
+            }
+            @keyframes ticker {
+                0% { transform: translateX(100%); }
+                100% { transform: translateX(-100%); }
+            }
+            .ticker-wrap {
+                background: #ff0000;
+                color: white;
+                white-space: nowrap;
+                overflow: hidden;
+                padding: 5px 0;
+            }
+            .ticker-text {
+                display: inline-block;
+                animation: ticker 15s linear infinite;
+                font-weight: bold;
+            }
   </style>
 </head>
 
@@ -58,6 +110,34 @@
     <p style="font-family: 'Song Myung', serif;">❤️ 2026.01.29 ❤️</p>
   </div>
 </section>
+  <section class="content-section bg-secondary text-white">
+            <div class="container px-4 px-lg-5 text-center">
+                <div class="news-frame">
+                    <div style="background: #ff0000; color: white; padding: 5px 15px; display: inline-block; font-weight: bold; position: absolute; top: 0; left: 0; z-index: 10;">
+                        BREAKING NEWS
+                    </div>
+                    <div style="position: relative;">
+                        <img src="assets/img/funny-photo.jpg" class="img-fluid" alt="News Image" style="width: 100%; max-height: 400px; object-fit: cover; opacity: 0.8;">
+                        <div style="position: absolute; top: 20px; right: 20px; color: white; font-weight: bold;">
+                            <span style="color: red; font-size: 20px;">●</span> LIVE
+                        </div>
+                    </div>
+                    <div style="background: rgba(0, 0, 0, 0.9); padding: 20px; text-align: left; border-top: 2px solid #ff0000;">
+                        <h3 style="font-family: 'Gowun Dodum', sans-serif; font-weight: bold; color: #fff;">
+                            [속보] "내 마음을 훔친 범인, 드디어 자수?!"
+                        </h3>
+                        <p style="font-family: 'Gowun Dodum', sans-serif; color: #ccc; margin: 0;">
+                            용의자 '은진', 평생 영재의 곁에서 머물러야 하는 '행복 종신형' 선고 위기...
+                        </p>
+                    </div>
+                    <div class="ticker-wrap">
+                        <div class="ticker-text">
+                            &nbsp;&nbsp;&nbsp;&nbsp;[WEATHER] 우리 사랑 전선 맑음 &nbsp;&nbsp;&nbsp;&nbsp; [SOCIETY] 세계 최고 잉꼬부부 탄생 예고 &nbsp;&nbsp;&nbsp;&nbsp; [ECONOMY] 내 모든 자산은 이제 당신의 것
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
 
 <div class="container">
   <div class="row d-flex flex-wrap align-items-center">
@@ -71,6 +151,7 @@
     <div class="col-12 col-md-6 col-lg-3">
       <img src="../assets/img/ive/2.jpg" class="img-fluid">
     </div>
+    
 
   </div>
 </div>

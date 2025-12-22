@@ -1,66 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta charset="utf-8" />
-        <link href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.19.2/css/mdb.min.css" rel="stylesheet"/>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.19.2/js/mdb.min.js"></script>
-        <link href="../css/styles.css" rel="stylesheet" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Song+Myung&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
-        <script src="../js/scripts.js"></script>
-    </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <body>
-        <section class="content-section" id="about">
-            <div class="container px-4 px-lg-5 text-center">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-10">
-                        <h2 style="font-family: 'Song Myung', serif;"><br>프로포즈 초대</h2>
-                        <p style="font-family: 'Song Myung', serif;">❤️ 2026.01.29 ❤️</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <link href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.19.2/css/mdb.min.css" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.19.2/js/mdb.min.js"></script>
 
-        <!-- here -->
-        <div class="container">
-        <div class="row d-flex flex-wrap align-items-center" data-target="#lightbox">
-            <div class="col-12 col-md-6 col-lg-3">
-               <video autoplay muted loop playsinline width="100%">
-                   <source src="../assets/img/ive/main1.mp4" type="video/mp4">
-                    브라우저가 동영상을 지원하지 않습니다.
-               </video>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3">
-              <img src="../assets/img/ive/2.jpg" data-target="#indicators" alt="" /> 
-            </div>
-            <div class="col-12 col-md-6 col-lg-3">
-              <img src="../assets/img/ive/3.jpg" data-target="#indicators" alt="" /> 
-            </div>
-            <div class="col-12 col-md-6 col-lg-3">
-              <img src="../assets/img/ive/4.jpg" data-target="#indicators" alt="" /> 
-            </div>
-            <div class="col-12 col-md-6 col-lg-3">
-              <img src="../assets/img/ive/5.jpg" data-target="#indicators" alt="" /> 
-            </div>
-            <div class="col-12 col-md-6 col-lg-3">
-              <img src="../assets/img/ive/6.jpg" data-target="#indicators" alt="" /> 
-            </div>
-            <div class="col-12 col-md-6 col-lg-3">
-              <img src="../assets/img/ive/7.jpg" data-target="#indicators" alt="" /> 
-            </div>
-	<audio id="bgm" autoplay muted loop>
-	  <source src="music.mp3" type="audio/mpeg">
-	</audio>
-  
-	<video id="bgVideo" autoplay muted loop playsinline style="opacity:0; width:1px; height:1px;">
-  		<source src="../assets/img/ive/music.mp4" type="video/mp4">
-	</video>
-        </div>
-        </div>
+  <link href="../css/styles.css" rel="stylesheet" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
+
+  <script src="../js/scripts.js"></script>
+</head>
+
+<body>
+
+<section class="content-section" id="about">
+  <div class="container text-center">
+    <h2 style="font-family: 'Song Myung', serif;"><br>프로포즈 초대</h2>
+    <p style="font-family: 'Song Myung', serif;">❤️ 2026.01.29 ❤️</p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="row d-flex flex-wrap align-items-center">
+
+    <div class="col-12 col-md-6 col-lg-3">
+      <video autoplay muted loop playsinline width="100%">
+        <source src="../assets/img/ive/main1.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-3">
+      <img src="../assets/img/ive/2.jpg">
+    </div>
+    <div class="col-12 col-md-6 col-lg-3">
+      <img src="../assets/img/ive/3.jpg">
+    </div>
+    <div class="col-12 col-md-6 col-lg-3">
+      <img src="../assets/img/ive/4.jpg">
+    </div>
+
+  </div>
 </div>
-    </body>
+
+<!-- ✅ 배경음악 (하나만!) -->
+<audio id="bgm" autoplay muted loop>
+  <source src="../assets/img/ive/music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- ✅ JS는 body 끝 -->
+<script>
+  const audio = document.getElementById('bgm');
+
+  document.addEventListener('click', () => {
+    audio.muted = false;
+    audio.volume = 0;
+    audio.play();
+
+    let v = 0;
+    const target = 0.5;
+    const step = target / 60;
+
+    const fade = setInterval(() => {
+      v += step;
+      audio.volume = v;
+      if (v >= target) clearInterval(fade);
+    }, 50);
+  }, { once: true });
+</script>
+
+</body>
 </html>

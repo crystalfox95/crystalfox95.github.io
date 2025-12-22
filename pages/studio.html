@@ -4,6 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>프로포즈 스튜디오</title>
+
   <link href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.19.2/css/mdb.min.css" rel="stylesheet"/>
   <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.19.2/js/mdb.min.js"></script>
 
@@ -13,13 +15,45 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
 
-  <script src="../js/scripts.js"></script>
+  <style>
+    body {
+      margin: 0;
+      background: #fff;
+    }
+
+    /* 상단 닫기 버튼 */
+    .close-btn {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 9999;
+      background: rgba(0,0,0,0.6);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      background: rgba(0,0,0,0.8);
+    }
+  </style>
 </head>
 
 <body>
 
-<section class="content-section" id="about">
-  <div class="container text-center">
+<!-- ❌ 음악 없음 (중요) -->
+
+<!-- 🔙 닫기 버튼 -->
+<button class="close-btn" onclick="closeStudio()">×</button>
+
+<!-- ================= CONTENT ================= -->
+
+<section class="content-section text-center">
+  <div class="container">
     <h2 style="font-family: 'Song Myung', serif;"><br>프로포즈 초대</h2>
     <p style="font-family: 'Song Myung', serif;">❤️ 2026.01.29 ❤️</p>
   </div>
@@ -35,42 +69,21 @@
     </div>
 
     <div class="col-12 col-md-6 col-lg-3">
-      <img src="../assets/img/ive/2.jpg">
-    </div>
-    <div class="col-12 col-md-6 col-lg-3">
-      <img src="../assets/img/ive/3.jpg">
-    </div>
-    <div class="col-12 col-md-6 col-lg-3">
-      <img src="../assets/img/ive/4.jpg">
+      <img src="../assets/img/ive/2.jpg" class="img-fluid">
     </div>
 
   </div>
 </div>
 
-<!-- ✅ 배경음악 (하나만!) -->
-<audio id="bgm" autoplay muted loop>
-  <source src="../assets/img/ive/music.mp3" type="audio/mpeg">
-</audio>
-
-<!-- ✅ JS는 body 끝 -->
+<!-- ================= SCRIPT ================= -->
 <script>
-  const audio = document.getElementById('bgm');
-
-  document.addEventListener('click', () => {
-    audio.muted = false;
-    audio.volume = 0;
-    audio.play();
-
-    let v = 0;
-    const target = 0.5;
-    const step = target / 60;
-
-    const fade = setInterval(() => {
-      v += step;
-      audio.volume = v;
-      if (v >= target) clearInterval(fade);
-    }, 50);
-  }, { once: true });
+  // iframe 닫기 → index 화면 복귀
+  function closeStudio() {
+    const frame = parent.document.getElementById('pageFrame');
+    frame.style.display = 'none';
+    frame.src = '';
+    parent.document.body.style.overflow = '';
+  }
 </script>
 
 </body>
